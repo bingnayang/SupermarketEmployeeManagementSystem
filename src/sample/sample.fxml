@@ -10,8 +10,7 @@
             prefWidth="600.0"
             fx:controller="sample.Controller" xmlns:fx="http://javafx.com/fxml/1">
     <center>
-        <TableView fx:id="employeeTable" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER"
-                   visible="false">
+        <TableView fx:id="employeeTable" prefHeight="200.0" prefWidth="300.0" BorderPane.alignment="CENTER">
             <columns>
                 <TableColumn text="Employee ID">
                     <cellValueFactory>
@@ -43,6 +42,16 @@
                         <PropertyValueFactory property="salary"/>
                     </cellValueFactory>
                 </TableColumn>
+                <TableColumn text="Start Date">
+                    <cellValueFactory>
+                        <PropertyValueFactory property="start_Date"/>
+                    </cellValueFactory>
+                </TableColumn>
+                <TableColumn text="End Date">
+                    <cellValueFactory>
+                        <PropertyValueFactory property="end_Date"/>
+                    </cellValueFactory>
+                </TableColumn>
             </columns>
             <BorderPane.margin>
                 <Insets right="10.0"/>
@@ -53,6 +62,8 @@
         <VBox alignment="CENTER" prefHeight="200.0" prefWidth="200.00" spacing="20.0" BorderPane.alignment="CENTER">
             <children>
                 <Button maxWidth="Infinity" mnemonicParsing="false" text="List Employees" onAction="#listEmployeesInfo"/>
+                <Button maxWidth="Infinity" mnemonicParsing="false" text="Add New Employees" onAction="#newEmployees"/>
+                <Button maxWidth="Infinity" mnemonicParsing="false" text="Update Employees Salary" />
             </children>
             <BorderPane.margin>
                 <Insets right="10.0"/>

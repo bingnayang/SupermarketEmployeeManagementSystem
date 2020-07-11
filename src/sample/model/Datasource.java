@@ -99,10 +99,10 @@ public class Datasource {
                     COLUMN_EMPLOYEE_END_DATE+","+
                     COLUMN_EMPLOYEE_STATUS_ID+") VALUES(?,?,?,?,?,?,?)";
 
-//    UPDATE employee
-//    SET salary = "15.00"
-//    WHERE employee.first_name = "Tom"
-//    AND employee.last_name = "Burlington"
+    //    UPDATE employee
+    //    SET salary = "15.00"
+    //    WHERE employee.first_name = "Tom"
+    //    AND employee.last_name = "Burlington"
     private static final String UPDATE_EMPLOYEE_SALARY =
             "UPDATE "+TABLE_EMPLOYEE+
             " SET "+COLUMN_EMPLOYEE_SALARY +"=?"+
@@ -111,7 +111,7 @@ public class Datasource {
 
     private static final String UPDATE_EMPLOYEE_STATUS = "";
     private static final String UPDATE_EMPLOYEE_TITLE = "";
-    private static final String UPDATE_EMPLOYEE_ENDDATE = "";
+    
 
     //    SELECT employmentStatus.employment_Status_Id
     //    FROM employmentStatus
@@ -129,14 +129,14 @@ public class Datasource {
             " FROM "+TABLE_TITLE+
             " WHERE "+TABLE_TITLE+"."+COLUMN_TITLE_NAME+"=?";
 
-//    SELECT department.department_Name
-//    FROM department
+    //    SELECT department.department_Name
+    //    FROM department
     private static final String QUERY_DEPARTMENT =
             "SELECT "+TABLE_DEPARTMENT+"."+COLUMN_DEPARTMENT_NAME+
             " FROM "+TABLE_DEPARTMENT;
 
-//    SELECT employee.first_name, employee.last_name
-//    FROM employee
+    //    SELECT employee.first_name, employee.last_name
+    //    FROM employee
     private static final String QUERY_EMPLOYEE_NAME =
             "SELECT "+TABLE_EMPLOYEE+"."+COLUMN_EMPLOYEE_FIRST_NAME+","+TABLE_EMPLOYEE+"."+COLUMN_EMPLOYEE_LAST_NAME+
             " FROM "+TABLE_EMPLOYEE;
@@ -149,11 +149,13 @@ public class Datasource {
     private PreparedStatement queryEmployeeByName;
     private PreparedStatement insertIntoEmployee;
     private PreparedStatement updateEmployeeSalary;
+    private PreparedStatement updateEmployeeEndDate;
 //
     private PreparedStatement queryEmploymentStatusId;
     private PreparedStatement queryTitleId;
     private PreparedStatement queryDepartment;
     private PreparedStatement queryEmployeeName;
+
 
     private static Datasource instance = new Datasource();
     private Datasource() {

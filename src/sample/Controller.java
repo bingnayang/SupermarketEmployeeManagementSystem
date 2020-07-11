@@ -4,10 +4,15 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.concurrent.Task;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.control.ButtonType;
+import javafx.scene.control.Dialog;
 import javafx.scene.control.TableView;
 import sample.model.Datasource;
-import sample.model.Employee;
 import sample.model.EmployeeInfo;
+
+import java.io.IOException;
+import java.util.Optional;
 
 public class Controller {
     @FXML
@@ -15,10 +20,31 @@ public class Controller {
 
     @FXML
     public void listEmployeesInfo(){
-        employeeTable.setVisible(true);
         Task<ObservableList<EmployeeInfo>> task = new GetAllArtistsTask();
         employeeTable.itemsProperty().bind(task.valueProperty());
         new Thread(task).start();
+    }
+    @FXML
+    public void newEmployees(){
+        Dialog<ButtonType> dialog = new Dialog<>();
+        dialog.initOwner(employeeTable.getScene().getWindow());
+        dialog.setTitle("Add New Employee");
+
+        FXMLLoader fxmlLoader = new FXMLLoader();
+        fxmlLoader.setLocation(getClass().getResource("newEmployeeDialog.fxml"));
+        try{
+            dialog.getDialogPane().setContent(fxmlLoader.load());
+        }catch (IOException e){
+            System.out.println("Couldn't load the dialog");
+            e.printStackTrace();
+            return;
+        }
+
+        Optional<ButtonType> result = dialog.showAndWait();
+        if(result.isPresent() && result.get() == ButtonType.OK){
+            NewEmployeeDialogController controller = fxmlLoader.getController();
+
+        }
     }
 
 }

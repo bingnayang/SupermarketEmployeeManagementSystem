@@ -18,7 +18,7 @@ public class Main extends Application {
         controller.listEmployeesInfo();
 
         primaryStage.setTitle("Supermarket Employee Management System");
-        primaryStage.setScene(new Scene(root, 800, 600));
+        primaryStage.setScene(new Scene(root, 1000, 600));
         primaryStage.show();
     }
 
