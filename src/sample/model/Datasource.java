@@ -281,65 +281,6 @@ public class Datasource {
             return null;
         }
     }
-
-    public List<String> queryAllEmployeesByDepartment(String deptName){
-        try{
-            queryEmployeesByDepartment.setString(1,deptName);
-            ResultSet resultSet = queryEmployeesByDepartment.executeQuery();
-
-            List<String> employeesList = new ArrayList<>();
-            while (resultSet.next()){
-                employeesList.add("Name: "+resultSet.getString(1)+" "+resultSet.getString(2)+
-                                    "\nTitle: "+resultSet.getString(3)+"\n");
-            }
-            return employeesList;
-        }catch (SQLException e){
-            System.out.println("Query failed: " + e.getMessage());
-            return null;
-        }
-    }
-
-    public List<String> queryEmployeesByTitle(String titleName){
-        try{
-            queryEmployeesByTitle.setString(1,titleName);
-            ResultSet resultSet = queryEmployeesByTitle.executeQuery();
-            List<String> employeesList = new ArrayList<>();
-            while (resultSet.next()){
-                employeesList.add("Name: "+resultSet.getString(1)+" "+resultSet.getString(2));
-            }
-            return employeesList;
-        }catch (SQLException e){
-            System.out.println("Query failed: " + e.getMessage());
-            return null;
-        }
-    }
-
-    public List<EmployeeInfo> queryEmployeeByName(String firstName, String lastName){
-        try{
-            queryEmployeeByName.setString(1,firstName);
-            queryEmployeeByName.setString(2,lastName);
-            ResultSet resultSet = queryEmployeeByName.executeQuery();
-            List<EmployeeInfo> employeesList = new ArrayList<>();
-            while (resultSet.next()){
-                EmployeeInfo employeeInfo = new EmployeeInfo();
-                employeeInfo.setEmployee_Id(resultSet.getInt(1));
-                employeeInfo.setFirst_Name(resultSet.getString(2));
-                employeeInfo.setLast_Name(resultSet.getString(3));
-                employeeInfo.setSalary(resultSet.getDouble(4));
-                employeeInfo.setTitle_Name(resultSet.getString(5));
-                employeeInfo.setDepartment_Name(resultSet.getString(6));
-                employeeInfo.setStart_Date(resultSet.getString(7));
-                employeeInfo.setEnd_Date(resultSet.getString(8));
-                employeesList.add(employeeInfo);
-            }
-            return employeesList;
-
-        }catch (SQLException e){
-            System.out.println("Query failed: " + e.getMessage());
-            return null;
-        }
-    }
-
     public void insertNewEmployee(String firstName, String lastName, String title, double salary, String startDate, String status){
         int titleID = queryTitleIdByTitle(title);
         int statusID = queryEmploymentStatusIdByStatus(status);
@@ -405,39 +346,6 @@ public class Datasource {
                     System.out.println("Couldn't reset auto-commit! " + e1.getMessage());
                 }
             }
-        }
-    }
-
-    public List<Department> queryDepartmentName(){
-        try{
-            ResultSet resultSet = queryDepartment.executeQuery();
-            List<Department> deptList = new ArrayList<>();
-            while(resultSet.next()){
-                Department department = new Department();
-                department.setDepartment(resultSet.getString("department_Name"));
-                deptList.add(department);
-            }
-            return deptList;
-        }catch (SQLException e){
-            System.out.println("Query failed: "+e.getMessage());
-            return null;
-        }
-    }
-    public List<Employee> queryEmployeesName(){
-        try{
-            ResultSet resultSet = queryEmployeeName.executeQuery();
-            List<Employee> employeeList = new ArrayList<>();
-            while(resultSet.next()){
-                Employee employee = new Employee();
-                employee.setFirst_Name(resultSet.getString(1));
-                employee.setLast_Name(resultSet.getString(2));
-
-                employeeList.add(employee);
-            }
-            return employeeList;
-        }catch (SQLException e){
-            System.out.println("Query failed: "+e.getMessage());
-            return null;
         }
     }
 }
