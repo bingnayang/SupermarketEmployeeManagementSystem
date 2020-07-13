@@ -340,17 +340,18 @@ public class Datasource {
         }
     }
 
-    public void insertNewEmployee(String firstName, String lastName, int title, double salary, String startDate, int status){
-
+    public void insertNewEmployee(String firstName, String lastName, String title, double salary, String startDate, String status){
+        int titleID = queryTitleIdByTitle(title);
+        int statusID = queryEmploymentStatusIdByStatus(status);
         try{
             connection.setAutoCommit(false);
             insertIntoEmployee.setString(1,firstName); // first name
             insertIntoEmployee.setString(2,lastName); // last
-            insertIntoEmployee.setInt(3,title); // title
+            insertIntoEmployee.setInt(3,titleID); // title
             insertIntoEmployee.setDouble(4,salary); // salary
             insertIntoEmployee.setString(5,startDate); // start date
             insertIntoEmployee.setString(6,""); // end date
-            insertIntoEmployee.setInt(7,status); // status
+            insertIntoEmployee.setInt(7,statusID); // status
             int affectedRows = insertIntoEmployee.executeUpdate();
             if(affectedRows == 1) {
                 System.out.println("Employee Insert Succeed");

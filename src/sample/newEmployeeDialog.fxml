@@ -15,7 +15,7 @@
             <Label text="Last Name: " GridPane.rowIndex="1" GridPane.columnIndex="0"/>
             <TextField fx:id="lastNameField" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
             <Label text="Title: " GridPane.rowIndex="2" GridPane.columnIndex="0"/>
-            <TextField fx:id="tileField" GridPane.rowIndex="2" GridPane.columnIndex="1"/>
+            <TextField fx:id="titleField" GridPane.rowIndex="2" GridPane.columnIndex="1"/>
             <Label text="Salary: " GridPane.rowIndex="3" GridPane.columnIndex="0"/>
             <TextField fx:id="salaryField" GridPane.rowIndex="3" GridPane.columnIndex="1"/>
             <Label text="Start Date: " GridPane.rowIndex="4" GridPane.columnIndex="0"/>

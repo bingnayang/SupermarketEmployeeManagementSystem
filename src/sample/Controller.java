@@ -9,6 +9,7 @@ import javafx.scene.control.ButtonType;
 import javafx.scene.control.Dialog;
 import javafx.scene.control.TableView;
 import sample.model.Datasource;
+import sample.model.Employee;
 import sample.model.EmployeeInfo;
 
 import java.io.IOException;
@@ -45,8 +46,9 @@ public class Controller {
         Optional<ButtonType> result = dialog.showAndWait();
         if(result.isPresent() && result.get() == ButtonType.OK){
             NewEmployeeDialogController controller = fxmlLoader.getController();
-
+            controller.processResults();
         }
+        new Thread().start();
     }
 
 }
