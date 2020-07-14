@@ -1,12 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <DialogPane fx:controller="sample.NewEmployeeDialogController" xmlns:fx="http://javafx.com/fxml">
     <headerText>
-        Instruction:
+        Instruction: Input the information
     </headerText>
     <content>
         <GridPane vgap="10" hgap="10">

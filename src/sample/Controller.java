@@ -54,19 +54,33 @@ public class Controller {
     @FXML
     public void updateEmployeeEndDate(){
         final EmployeeInfo employee = (EmployeeInfo)employeeTable.getSelectionModel().getSelectedItem();
-//        System.out.println(employee.getEmployee_Id());
-        Task<Boolean> task = new Task<>() {
-            @Override
-            protected Boolean call() throws Exception {
-                return Datasource.getInstance().updateEmployeeEndDate(employee.getEmployee_Id(),"2020/04/23");
-            }
-        };
-        task.setOnSucceeded(e -> {
-            if(task.valueProperty().get()){
-                employeeTable.refresh();
-            }
-        });
-        new Thread(task).start();
+
+        Dialog<ButtonType> dialog = new Dialog<>();
+        dialog.initOwner(employeeTable.getScene().getWindow());
+        dialog.setTitle("Update Employee End Date");
+
+        FXMLLoader fxmlLoader = new FXMLLoader();
+        fxmlLoader.setLocation(getClass().getResource("updateEndDateDialog.fxml"));
+        try{
+            dialog.getDialogPane().setContent(fxmlLoader.load());
+        }catch (IOException e){
+            System.out.println("Couldn't load the dialog");
+            e.printStackTrace();
+            return;
+        }
+        // Get selected employee name and display to dialog
+        UpdateEndDateDialogController controller = fxmlLoader.getController();
+        controller.setFirstNameLabel(employee.getFirst_Name());
+        controller.setLastNameLabel(employee.getLast_Name());
+
+        dialog.getDialogPane().getButtonTypes().add(ButtonType.OK);
+        dialog.getDialogPane().getButtonTypes().add(ButtonType.CANCEL);
+
+        Optional<ButtonType> result = dialog.showAndWait();
+        if(result.isPresent() && result.get() == ButtonType.OK){
+            controller.processResults(employee.getEmployee_Id());
+        }
+        new Thread().start();
     }
 
 }
