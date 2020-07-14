@@ -1,5 +1,6 @@
 package sample;
 
+import javafx.beans.Observable;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.concurrent.Task;
@@ -49,6 +50,23 @@ public class Controller {
             controller.processResults();
         }
         new Thread().start();
+    }
+    @FXML
+    public void updateEmployeeEndDate(){
+        final EmployeeInfo employee = (EmployeeInfo)employeeTable.getSelectionModel().getSelectedItem();
+//        System.out.println(employee.getEmployee_Id());
+        Task<Boolean> task = new Task<>() {
+            @Override
+            protected Boolean call() throws Exception {
+                return Datasource.getInstance().updateEmployeeEndDate(employee.getEmployee_Id(),"2020/04/23");
+            }
+        };
+        task.setOnSucceeded(e -> {
+            if(task.valueProperty().get()){
+                employeeTable.refresh();
+            }
+        });
+        new Thread(task).start();
     }
 
 }

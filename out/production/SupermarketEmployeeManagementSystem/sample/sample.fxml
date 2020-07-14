@@ -63,7 +63,7 @@
             <children>
                 <Button maxWidth="Infinity" mnemonicParsing="false" text="List Employees" onAction="#listEmployeesInfo"/>
                 <Button maxWidth="Infinity" mnemonicParsing="false" text="Add New Employees" onAction="#newEmployees"/>
-                <Button maxWidth="Infinity" mnemonicParsing="false" text="Update Employees Salary" />
+                <Button maxWidth="Infinity" mnemonicParsing="false" text="Update Employees End Date" onAction="#updateEmployeeEndDate"/>
             </children>
             <BorderPane.margin>
                 <Insets right="10.0"/>
