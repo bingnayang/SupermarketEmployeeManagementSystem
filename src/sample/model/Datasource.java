@@ -7,8 +7,8 @@ import java.util.List;
 public class Datasource {
     // Database name
     // SQLite connection strings
-    public static final String DB_Name = "supermarketemployee.db";
-    public static final String CONNECTION_STRING = "jdbc:sqlite:/Users/Bing/Documents/GitHub/BingNaYang.github.io/SupermarketEmployeeDB/" + DB_Name;
+    public static final String DB_NAME = "supermarketemployee.db";
+    public static final String CONNECTION_STRING = "jdbc:sqlite:/Users/Bing/Documents/GitHub/BingNaYang.github.io/SupermarketEmployeeDB/" + DB_NAME;
     // Constant Variables
     // Employee Table
     public static final String TABLE_EMPLOYEE = "employee";
@@ -101,13 +101,11 @@ public class Datasource {
 
     //    UPDATE employee
     //    SET salary = "15.00"
-    //    WHERE employee.first_name = "Tom"
-    //    AND employee.last_name = "Burlington"
+    //    WHERE employee.id = 3
     private static final String UPDATE_EMPLOYEE_SALARY =
             "UPDATE "+TABLE_EMPLOYEE+
             " SET "+COLUMN_EMPLOYEE_SALARY +"=?"+
-            " WHERE "+TABLE_EMPLOYEE+"."+COLUMN_EMPLOYEE_FIRST_NAME+"=?"+
-            " AND "+TABLE_EMPLOYEE+"."+COLUMN_EMPLOYEE_LAST_NAME+"=?";
+            " WHERE "+TABLE_EMPLOYEE+"."+COLUMN_EMPLOYEE_ID+"=?";
 
     private static final String UPDATE_EMPLOYEE_STATUS = "";
     private static final String UPDATE_EMPLOYEE_TITLE = "";
@@ -329,12 +327,11 @@ public class Datasource {
         }
     }
 
-    public void updateEmployeeSalaryByName(double newSalary,String firstName, String lastName){
+    public void updateEmployeeSalary(double newSalary,int employeeID){
         try{
             connection.setAutoCommit(false);
             updateEmployeeSalary.setDouble(1,newSalary);
-            updateEmployeeSalary.setString(2,firstName);
-            updateEmployeeSalary.setString(3,lastName);
+            updateEmployeeSalary.setInt(2,employeeID);
             int affectedRows = updateEmployeeSalary.executeUpdate();
             if(affectedRows == 1) {
                 System.out.println("Employee Update Succeed");

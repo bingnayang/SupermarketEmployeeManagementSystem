@@ -62,8 +62,10 @@
         <VBox alignment="CENTER" prefHeight="200.0" prefWidth="200.00" spacing="20.0" BorderPane.alignment="CENTER">
             <children>
                 <Button maxWidth="Infinity" mnemonicParsing="false" text="List Employees" onAction="#listEmployeesInfo"/>
-                <Button maxWidth="Infinity" mnemonicParsing="false" text="Add New Employees" onAction="#newEmployees"/>
-                <Button maxWidth="Infinity" mnemonicParsing="false" text="Update Employees End Date" onAction="#updateEmployeeEndDate"/>
+                <Button maxWidth="Infinity" mnemonicParsing="false" text="Add New Employee" onAction="#newEmployees"/>
+                <Button maxWidth="Infinity" mnemonicParsing="false" text="Update Employee End Date" onAction="#updateEmployeeEndDate"/>
+                <Button maxWidth="Infinity" mnemonicParsing="false" text="Update Employee Title" />
+                <Button maxWidth="Infinity" mnemonicParsing="false" text="Update Employee Salary" onAction="#updateEmployeeSalary"/>
             </children>
             <BorderPane.margin>
                 <Insets right="10.0"/>

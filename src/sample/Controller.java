@@ -1,6 +1,5 @@
 package sample;
 
-import javafx.beans.Observable;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.concurrent.Task;
@@ -10,7 +9,6 @@ import javafx.scene.control.ButtonType;
 import javafx.scene.control.Dialog;
 import javafx.scene.control.TableView;
 import sample.model.Datasource;
-import sample.model.Employee;
 import sample.model.EmployeeInfo;
 
 import java.io.IOException;
@@ -82,7 +80,37 @@ public class Controller {
         }
         new Thread().start();
     }
+    @FXML
+    public void updateEmployeeSalary(){
+        final EmployeeInfo employee = (EmployeeInfo)employeeTable.getSelectionModel().getSelectedItem();
 
+        Dialog<ButtonType> dialog = new Dialog<>();
+        dialog.initOwner(employeeTable.getScene().getWindow());
+        dialog.setTitle("Update Employee Salary");
+        FXMLLoader fxmlLoader = new FXMLLoader();
+        fxmlLoader.setLocation(getClass().getResource("updateSalaryDialog.fxml"));
+        try{
+            dialog.getDialogPane().setContent(fxmlLoader.load());
+        }catch (IOException e){
+            System.out.println("Couldn't load the dialog");
+            e.printStackTrace();
+            return;
+        }
+
+        // Get selected employee name and display to dialog
+        UpdateSalaryDialogController controller = fxmlLoader.getController();
+        controller.setFirstNameLabel(employee.getFirst_Name());
+        controller.setLastNameLabel(employee.getLast_Name());
+
+        dialog.getDialogPane().getButtonTypes().add(ButtonType.OK);
+        dialog.getDialogPane().getButtonTypes().add(ButtonType.CANCEL);
+
+        Optional<ButtonType> result = dialog.showAndWait();
+        if(result.isPresent() && result.get() == ButtonType.OK){
+            controller.processResults(employee.getEmployee_Id());
+        }
+        new Thread().start();
+    }
 }
 class GetAllArtistsTask extends Task {
     @Override

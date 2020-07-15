@@ -5,9 +5,9 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import sample.model.Datasource;
 
-public class UpdateEndDateDialogController {
+public class UpdateSalaryDialogController {
     @FXML
-    private TextField endDateField;
+    private TextField salaryField;
     @FXML
     private Label firstNameLabel;
     @FXML
@@ -22,8 +22,7 @@ public class UpdateEndDateDialogController {
     }
 
     public void processResults(int employeeID){
-        String endDate = endDateField.getText().trim();
-        Datasource.getInstance().updateEmployeeEndDate(employeeID,endDate);
+        double newSalary = Double.parseDouble(salaryField.getText().trim());
+        Datasource.getInstance().updateEmployeeSalary(newSalary,employeeID);
     }
-
 }
