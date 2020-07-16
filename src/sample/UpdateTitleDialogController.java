@@ -23,6 +23,6 @@ public class UpdateTitleDialogController {
 
     public void processResults(int employeeID){
         String newTitle = titleField.getText().trim();
-        Datasource.getInstance().updateEmployeeTitle(newTitle,employeeID);
+        Datasource.getInstance().updateEmployeeTitle(employeeID,newTitle);
     }
 }
