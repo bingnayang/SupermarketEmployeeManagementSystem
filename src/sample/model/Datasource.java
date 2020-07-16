@@ -387,4 +387,7 @@ public class Datasource {
             }
         }
     }
+    public void updateEmployeeTitle(String newTitle,int employeeID){
+
+    }
 }

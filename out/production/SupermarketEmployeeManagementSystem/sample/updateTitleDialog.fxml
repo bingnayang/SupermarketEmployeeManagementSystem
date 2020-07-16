@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<DialogPane fx:controller="sample.UpdateTitleDialogController" xmlns:fx="http://javafx.com/fxml">
+    <headerText>
+        Instruction: Input the information
+    </headerText>
+    <content>
+        <GridPane vgap="10" hgap="10">
+            <Label text="First Name: " GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+            <Label fx:id="firstNameLabel" GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+            <Label text="Last Name: " GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+            <Label fx:id="lastNameLabel" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+            <Label text="New Title: " GridPane.rowIndex="2" GridPane.columnIndex="0"/>
+            <TextField fx:id="titleField" GridPane.rowIndex="2" GridPane.columnIndex="1"/>
+        </GridPane>
+    </content>
+</DialogPane>
